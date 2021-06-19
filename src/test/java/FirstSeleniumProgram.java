@@ -13,7 +13,6 @@ public class FirstSeleniumProgram {
         driver.manage().window().maximize();
 
         //click on food store icon
-        //I am adding another command
         By foodIcon = By.cssSelector(".title > img");
         WebElement foodIconWe = driver.findElement(foodIcon);
         foodIconWe.click();
