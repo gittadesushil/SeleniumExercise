@@ -12,6 +12,7 @@ public class FirstSeleniumProgram {
         driver.get("https://foodstore-1.web.app/login");
         driver.manage().window().maximize();
 
+        //click on food store icon
         By foodIcon = By.cssSelector(".title > img");
         WebElement foodIconWe = driver.findElement(foodIcon);
         foodIconWe.click();
