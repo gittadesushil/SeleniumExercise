@@ -7,14 +7,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class FirstSeleniumProgram {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver(); //object creation
-        driver.get("https://foodstore-1.web.app/"); //open a browser and navigate to URL
+        //driver.get("https://foodstore-1.web.app/"); //open a browser and navigate to URL
 
+        driver.get("https://foodstore-1.web.app/login");
         driver.manage().window().maximize();
 
+        By foodIcon = By.cssSelector(".title > img");
+        WebElement foodIconWe = driver.findElement(foodIcon);
+        foodIconWe.click();
+
         //type city name in search box
-        By className = By.className("cityInput");
-        WebElement searchBox = driver.findElement(className);
-        searchBox.sendKeys("mumbai");
+        By cityInput = By.className("cityInput");
+        WebElement cityInputWe = driver.findElement(cityInput);
+        cityInputWe.sendKeys("mumbai");
 
         //click on search button
         By by = By.id("citySearchbtn");
