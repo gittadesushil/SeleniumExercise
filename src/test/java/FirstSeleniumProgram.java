@@ -3,14 +3,42 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 public class FirstSeleniumProgram {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver(); //object creation
-        //driver.get("https://foodstore-1.web.app/"); //open a browser and navigate to URL
+        driver.get("https://foodstore-1.web.app/"); //open a browser and navigate to URL
 
-        driver.get("https://foodstore-1.web.app/login");
+        //driver.get("https://foodstore-1.web.app/login");
         driver.manage().window().maximize();
+
+        By cartS = By.cssSelector(".headerBtns .cart");
+        WebElement cartButton = driver.findElement(cartS);
+        cartButton.click();
+
+        //Read text from home screen
+        By coverTitleS = By.className("coverTitle");
+        WebElement coverTitleWe = driver.findElement(coverTitleS);
+        String homePageText = coverTitleWe.getText();
+        System.out.println("Text on the home screen: "+homePageText);
+
+        By signInS = By.cssSelector(".headerBtns .signin");
+        WebElement signInButton = driver.findElement(signInS);
+        signInButton.click();
+
+        //Read text from home screen
+        WebElement homePageText2 = driver.findElement(By.xpath("//p[contains(text(), 'Order food from favourite restaurants near you')]"));
+        String text2 = homePageText2.getText();
+        System.out.println(text2);
+
+        //text2 = actual result
+        //"Order food from favourite restaurants near you" = expected result
+        if(text2.equals("Order food from favourite restaurants near you")){
+            System.out.println("User is available on the home screen!");
+        }
 
         //click on food store icon
         By foodIcon = By.cssSelector(".title > img");
