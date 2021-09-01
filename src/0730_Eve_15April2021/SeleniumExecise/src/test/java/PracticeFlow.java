@@ -43,12 +43,15 @@ public class PracticeFlow {
         Thread.sleep(time);
         driver.findElement(By.className("mainPage_restaurent_inner_container")).click();
 
-        List<WebElement> hotels = driver.findElements(By.cssSelector(".mainPage_card_container > div > div > div:nth-of-type(2)"));
-        Thread.sleep(3000);
-        for (WebElement we:hotels) {
-            we.getScreenshotAs(OutputType.FILE);
-            System.out.println("Hotel name:"+we.getSize());
+        Thread.sleep(5000);
+        List<WebElement> hotels = driver.findElements(By.className("res_title"));
+        for (WebElement we : hotels){
+            System.out.println(we.getText());
+
+            if(we.getText().equals("Barbeque Nation"))
+                we.click();
         }
+
 
 
 
