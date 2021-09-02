@@ -1,5 +1,7 @@
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -43,5 +45,27 @@ public class HomePage {
            System.out.println("fail");
        }
 
+    }
+
+     @When("user should entered a Invalid city name like {string}")
+    public void userShouldEnteredAInvalidCityNameLike(String arg0) {
+        driver.findElement(By.className("cityInput")).sendKeys(arg0);
+    }
+
+    @And("click on Search button")
+    public void clickOnButton() {
+        driver.findElement(By.id("citySearchbtn")).click();
+    }
+
+    @Then("user should see error msg {string}")
+    public void userShouldSeeErrorMsg(String arg0) throws InterruptedException {
+        Thread.sleep(3000);
+        String actualErrorMsg = driver.findElement(By.cssSelector(".error > span")).getText();
+        String expectedErrorMsg = arg0;
+        if(expectedErrorMsg.equals(actualErrorMsg)){
+            System.out.println("PASS");
+        }else{
+            System.out.println("FAIL");
+        }
     }
 }
