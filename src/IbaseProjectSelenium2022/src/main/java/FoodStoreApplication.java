@@ -13,6 +13,7 @@ public class FoodStoreApplication {
     static WebDriver driver = new ChromeDriver();
 
     public static void main(String[] args)  {
+        //Example of Implicit wait
         //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));  //implicit wait
         driver.get("https://foodstore-1.web.app/");
         driver.manage().window().maximize();
@@ -55,11 +56,11 @@ public class FoodStoreApplication {
     }
 
     private static void verifyUserIsAvailableOnListOfHotelsPage()  {
-//        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        WebElement element1 = wait1.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#dropdown01")));
+        //Example of Explicit wait
+        //WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //WebElement element1 = wait1.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#dropdown01")));
 
-
-        //Fluent wait
+        //Example of Fluent wait
         //Declare and initialise a fluent wait
         FluentWait wait = new FluentWait(driver);
         //Specify the timeout of the wait
